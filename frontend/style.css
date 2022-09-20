@@ -54,7 +54,6 @@
 }
 
 .article-content {
-  border: 1px solid rebeccapurple;
   margin-top: 2em;
   padding: 1em;
 }
@@ -68,5 +67,19 @@
 }
 
 .bold {
-    
+  font-weight: bold;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  padding: 1em;
+  position: relative;
+}
+
+.rights {
+  font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  margin-top: 2em;
 }
