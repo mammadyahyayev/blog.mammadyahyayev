@@ -1,5 +1,72 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.article {
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.article-header {
+  width: 100%;
+}
+
+.header-text {
+  width: 95%;
+}
+
+.article-detail {
+  display: flex;
+  align-items: center;
+  margin-top: 0.4em;
+}
+
+.detail {
+  color: rgb(183, 177, 177);
+  margin: 0 0.3em;
+}
+
+.article-detail .author::before {
+  content: "·";
+  margin-right: 0.3em;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  margin-top: 0.4em;
+}
+
+.tag {
+  display: block;
+  padding: 0.3em 0.85em;
+  margin: 0.2em;
+  text-transform: lowercase;
+  background-color: aliceblue;
+  border: 1px solid #ccc;
+  border-radius: 2em;
+}
+
+.tag::before {
+  content: "#";
+}
+
+.article-content {
+  border: 1px solid rebeccapurple;
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.paragraph-block {
+  font-size: 18px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+    
 }
