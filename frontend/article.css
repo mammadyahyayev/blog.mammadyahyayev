@@ -8,6 +8,10 @@
   margin-top: 2em;
 }
 
+.main-article {
+  border-bottom: 1px solid rgb(162, 162, 162);
+}
+
 .article-header {
   width: 100%;
 }
@@ -66,6 +70,29 @@
 
 .bold {
   font-weight: bold;
+}
+
+.more-articles {
+  margin: 1.3em 0;
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+}
+.more-articles .article-wrapper {
+  padding: 0 1em;
+  margin-bottom: 1em;
+}
+
+.more-articles .article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0em;
+  border-bottom: 1px solid rgb(103, 100, 100);
+}
+
+.more-articles .article .date {
+  margin: 0;
 }
 
 .footer {
