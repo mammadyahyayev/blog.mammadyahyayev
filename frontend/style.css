@@ -6,7 +6,6 @@
 
 .article {
   margin-top: 2em;
-  padding: 1em;
 }
 
 .article-header {
@@ -55,7 +54,6 @@
 
 .article-content {
   margin-top: 2em;
-  padding: 1em;
 }
 
 .paragraph-block {
@@ -74,12 +72,20 @@
   background-color: black;
   color: white;
   padding: 1em;
-  position: relative;
+  text-align: center;
+}
+
+.footer form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
 }
 
 .rights {
-  font-size: 12px;
-  position: absolute;
-  bottom: 10px;
+  text-align: center;
   margin-top: 2em;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #ccc;
 }
