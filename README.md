@@ -1,4 +1,1 @@
-# drakula-coder
-Personal Blog Website
-- Backend
-- Frontend
+# Mammad Yahyayev Personal Blog
