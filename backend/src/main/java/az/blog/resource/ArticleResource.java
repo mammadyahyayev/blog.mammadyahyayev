@@ -14,17 +14,17 @@ public class ArticleResource {
         return null;
     }
 
-    @PostMapping(value = "/article")
+    @PostMapping(value = "/articles")
     public ResponseEntity<Void> createArticle() {
         return null;
     }
 
-    @PutMapping(value = "/article")
+    @PutMapping(value = "/articles")
     public ResponseEntity<Void> updateArticle() {
         return null;
     }
 
-    @DeleteMapping(value = "/article")
+    @DeleteMapping(value = "/articles")
     public ResponseEntity<Void> deleteArticle() {
         return null;
     }
