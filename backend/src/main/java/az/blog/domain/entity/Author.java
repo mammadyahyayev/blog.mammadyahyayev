@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Author {
     private String address;
 
     @ElementCollection
-    @CollectionTable(name = "author_social_accounts",
+    @CollectionTable(name = "author_social_account",
             joinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
     @MapKeyColumn(name = "url")
     @Column(name = "social_media")
