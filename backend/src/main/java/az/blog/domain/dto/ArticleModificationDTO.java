@@ -1,34 +1,38 @@
-package az.blog.domain.entity;
+package az.blog.domain.dto;
 
+import az.blog.domain.entity.Author;
 import az.blog.domain.enumeration.ArticleStatus;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "article")
-public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ArticleModificationDTO {
+
+    @NotNull
+    @NotEmpty
     private String title;
-    private LocalDate creationDate;
-    private LocalDate publishedDate;
+
     private String url;
 
-    @Enumerated
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate creationDate;
+
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate publishedDate;
+
     private ArticleStatus status;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
     private Author author;
 
-    public Long getId() {
-        return id;
-    }
+    public ArticleModificationDTO() {
 
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -37,6 +41,14 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public LocalDate getCreationDate() {
@@ -55,14 +67,6 @@ public class Article {
         this.publishedDate = publishedDate;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public ArticleStatus getStatus() {
         return status;
     }
@@ -77,13 +81,5 @@ public class Article {
 
     public void setAuthor(Author author) {
         this.author = author;
-    }
-
-    public String getAuthorFullName() {
-        if (this.author != null) {
-            return this.author.getName() + " " + this.author.getSurname();
-        }
-
-        return null;
     }
 }
