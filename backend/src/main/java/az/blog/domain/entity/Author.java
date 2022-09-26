@@ -28,4 +28,25 @@ public class Author {
 
     @OneToMany(mappedBy = "author")
     private Set<Article> articles = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
 }
