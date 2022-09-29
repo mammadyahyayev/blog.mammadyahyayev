@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.categories {
+    margin-top: 1em;
+}
+
+.category {
+    margin-top: 3em;
+}
+
+.category .header {
+    border-bottom: 1px solid rgb(176, 171, 171);
+    margin-left: 0.5em;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    margin-left: 1em;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #0097A7;
+    cursor: pointer;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 30px;
+    color: white;
+}
+
+.profile-dropdown {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 200px;
+    text-align: left;
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    z-index: 100;
+    background-color: white;
+    display: none;
+}
+
+.profile-dropdown ul {
+    list-style-type: none;
+}
+
+.profile-dropdown ul li {
+    text-decoration: none;
+    margin: .4em 1em;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    padding: .3em;
+    transition: padding-left .2s ease-in;
+}
+
+.profile-dropdown ul li::before {
+    content: '> ';
+}
+
+.profile-dropdown ul li:hover {
+    padding-left: 1em;
+    transition: padding-left .2s ease-in;
+}
+
+.profile-dropdown ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-banner {
+    border: 1px solid #ccc;
+    margin-top: 2em;
+    background-color: #F8F9FA;
+}
+
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.profile-banner-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0097A7;
+    transform: translate(20px, 50px);
+}
+
+.profile-banner-circle h1 {
+    font-size: 100px;
+    color: white;
+}
+
+.username {
+    font-size: 70px;
+    margin-left: 1em;
+    letter-spacing: .1em;
+}
+
+.content-container {
+    border: 1px solid #ccc;
+    margin-top: 5em;
+    background-color: #F8F9FA;
+}
+
+.general-information {
+    padding: 1em;
+}
+
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.rights {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #ccc;
+}
+
