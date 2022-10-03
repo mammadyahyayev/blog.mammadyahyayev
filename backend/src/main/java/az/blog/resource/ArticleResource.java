@@ -21,12 +21,9 @@ import java.util.List;
 @RequestMapping(value = "/api/v1")
 public class ArticleResource {
 
-    private final ArticleRepository articleRepository;
-
     private final ArticleService articleService;
 
-    public ArticleResource(ArticleRepository articleRepository, ArticleService articleService) {
-        this.articleRepository = articleRepository;
+    public ArticleResource(ArticleService articleService) {
         this.articleService = articleService;
     }
 
