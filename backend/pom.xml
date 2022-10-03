@@ -13,23 +13,25 @@
         <maven.compiler.target>11</maven.compiler.target>
         <java.version>11</java.version>
         <java.jwt.version>4.0.0</java.jwt.version>
+        <spring.boot.version>2.7.3</spring.boot.version>
+        <spring.version>5.7.3</spring.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
@@ -39,17 +41,17 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>5.7.3</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>5.7.3</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -65,7 +67,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -80,7 +82,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.7.3</version>
+            <version>${spring.boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
