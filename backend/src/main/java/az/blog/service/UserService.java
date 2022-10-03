@@ -6,13 +6,16 @@ import az.blog.domain.enumeration.Role;
 import az.blog.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.Collections;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -21,6 +24,7 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     public void createUser(UserDTO userDTO) {
         User user = new User();
@@ -40,4 +44,19 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        if (username == null || username.trim().isEmpty()) {
+            return null;
+        }
+
+        return userRepository.findByUsername(username)
+                .map(UserService::createSecurityUser)
+                .orElseThrow();
+    }
+
+    private static org.springframework.security.core.userdetails.User createSecurityUser(User u) {
+        return new org.springframework.security.core.userdetails.User(
+                u.getUsername(), u.getPassword(), Collections.emptyList());
+    }
 }
