@@ -35,7 +35,7 @@ public class UserService implements UserDetailsService {
 
         BCryptPasswordEncoder bCryptPasswordEncoder =
                 new BCryptPasswordEncoder(10, new SecureRandom());
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        String encodedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
 
         user.setPassword(encodedPassword);
         user.setRole(Role.USER);

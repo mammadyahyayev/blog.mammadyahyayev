@@ -17,9 +17,9 @@ public class TokenProvider {
 
     private final Logger log = LoggerFactory.getLogger(TokenProvider.class);
 
-    public static String generateToken(String email) {
+    public static String generateToken(String username) {
         return JWT.create()
-                .withSubject(email)
+                .withSubject(username)
                 .withIssuer(JwtSecurityConstant.ISSUER)
                 .withIssuedAt(new Date(System.currentTimeMillis()))
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtSecurityConstant.EXPIRATION_TIME))

@@ -54,9 +54,8 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("UrlMapping.AUTH + UrlMapping.SIGN_UP").permitAll()
-                .antMatchers("UrlMapping.AUTH + UrlMapping.LOGIN").permitAll()
-                .antMatchers("UrlMapping.VALIDATE_JWT").permitAll()
+                .antMatchers("/api/v1/user").permitAll()
+                .antMatchers("/api/v1/user/authenticate").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
 
