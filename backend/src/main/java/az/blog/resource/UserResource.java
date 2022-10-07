@@ -1,7 +1,9 @@
 package az.blog.resource;
 
 import az.blog.domain.dto.UserDTO;
+import az.blog.domain.entity.User;
 import az.blog.repository.UserRepository;
+import az.blog.resource.errors.BadRequestException;
 import az.blog.resource.errors.Operation;
 import az.blog.resource.errors.UserAlreadyExistException;
 import az.blog.resource.vm.LoginVM;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/v1")
@@ -56,12 +59,30 @@ public class UserResource {
     }
 
     @GetMapping("/users")
-    public List<UserResponseVM> getAllUsers() {
-        return Collections.emptyList();
+    public ResponseEntity<List<UserResponseVM>> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        if (users.size() == 0) {
+            return new ResponseEntity<>(Collections.emptyList(), HttpStatus.NO_CONTENT);
+        }
+
+        List<UserResponseVM> responseUsers = users.stream().map(user -> {
+            UserResponseVM responseVM = new UserResponseVM();
+            responseVM.setFirstname(user.getFirstname());
+            responseVM.setLastname(user.getLastname());
+            responseVM.setUsername(user.getUsername());
+            responseVM.setEmail(user.getEmail());
+            return responseVM;
+        }).collect(Collectors.toList());
+
+        return new ResponseEntity<>(responseUsers, HttpStatus.OK);
     }
 
     @GetMapping("/user/{id}")
     public UserResponseVM getIndividualUser(@PathVariable("id") Long id) {
+        if (id == null || id <= 0) {
+            throw new BadRequestException("id", "Id cannot be null or less than a zero");
+        }
+
         return null;
     }
 

@@ -54,7 +54,7 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/user").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
                 .antMatchers("/api/v1/user/authenticate").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();

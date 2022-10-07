@@ -4,6 +4,7 @@ import az.blog.domain.dto.ArticleCreationDTO;
 import az.blog.domain.dto.ArticleModificationDTO;
 import az.blog.domain.entity.Article;
 import az.blog.repository.ArticleRepository;
+import az.blog.resource.errors.BadRequestException;
 import az.blog.resource.errors.Operation;
 import az.blog.resource.vm.ArticleVM;
 import az.blog.resource.vm.OperationResult;
@@ -51,7 +52,7 @@ public class ArticleResource {
     @PutMapping(value = "/articles/{id}")
     public ResponseEntity<OperationResult> updateArticle(@PathVariable("id") Long id, @RequestBody @Valid ArticleModificationDTO articleDTO) {
         if (id == null) {
-            throw new ValidationException("Id cannot be null"); //TODO: Replace this exception with BadRequestException (create it at first)
+            throw new BadRequestException("id", "Id cannot be null or less than a zero");
         }
 
         articleService.updateArticle(id, articleDTO);
