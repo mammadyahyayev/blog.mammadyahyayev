@@ -24,9 +24,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -78,12 +80,24 @@ public class UserResource {
     }
 
     @GetMapping("/user/{id}")
-    public UserResponseVM getIndividualUser(@PathVariable("id") Long id) {
+    public ResponseEntity<UserResponseVM> getIndividualUser(@PathVariable("id") Long id) {
         if (id == null || id <= 0) {
             throw new BadRequestException("id", "Id cannot be null or less than a zero");
         }
 
-        return null;
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            throw new EntityNotFoundException("User not found");
+        }
+
+        User user = optionalUser.get();
+        UserResponseVM userResponse = new UserResponseVM();
+        userResponse.setFirstname(user.getFirstname());
+        userResponse.setLastname(user.getLastname());
+        userResponse.setUsername(user.getUsername());
+        userResponse.setEmail(user.getEmail());
+
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
     //TODO: Create a methods that allow update password, then come back
@@ -93,13 +107,23 @@ public class UserResource {
      * Update user properties except password
      */
     @PutMapping("/user")
-    public void updateUser(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<OperationResult> updateUser(@Valid @RequestBody UserDTO userDTO) {
+        if (userDTO.getId() == null || userDTO.getId() <= 0) {
+            throw new BadRequestException("id", "Id cannot be null or less than or equal to zero");
+        }
 
+        userService.updateUser(userDTO);
+        return new ResponseEntity<>(Operation.updatedSuccessfully("User updated"), HttpStatus.OK);
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
+    public ResponseEntity<OperationResult> deleteUser(@PathVariable("id") Long id) {
+        if (id == null || id <= 0) {
+            throw new BadRequestException("id", "Id cannot be null or less than a zero");
+        }
 
+        userService.deleteUser(id);
+        return new ResponseEntity<>(Operation.deletedSuccessfully("User deleted"), HttpStatus.OK);
     }
 
     @PostMapping("/user/authenticate")
